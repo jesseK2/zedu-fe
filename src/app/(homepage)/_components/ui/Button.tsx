@@ -41,6 +41,7 @@ export const ArrowBtn = ({
   onClick,
   href,
   linkToHome,
+  linkToPlan,
   inverted,
   loggedInText,
   hideArrow = false,
@@ -51,6 +52,7 @@ export const ArrowBtn = ({
   href?: string;
   hideArrow?: boolean;
   linkToHome?: boolean;
+  linkToPlan?: boolean;
   loggedInText?: string;
   inverted?: boolean;
 }) => {
@@ -63,6 +65,12 @@ export const ArrowBtn = ({
   }, []);
 
   if (linkToHome) href = token ? `/${orgSlug}` : "/auth/sign-up";
+  if (linkToPlan) {
+    href =
+      token && orgSlug
+        ? `/${orgSlug}/settings/organisation/billing/all-plans`
+        : "/auth/sign-up";
+  }
 
   return (
     <Link href={href || "#"}>

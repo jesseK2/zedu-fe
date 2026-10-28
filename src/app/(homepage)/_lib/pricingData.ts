@@ -2,6 +2,9 @@ type BillingCycle = "monthly" | "yearly";
 type CtaVariant = "outline" | "filled";
 type PricingVariant = "starter" | "popular" | "enterprise";
 
+/** Resolved at render time to the viewer's org billing page, or sign-up. */
+export const PLAN_CTA = "plan";
+
 type PricingFeature = {
   text: string;
   enabled: boolean;
@@ -59,7 +62,7 @@ const staticPricingCards: PricingCardData[] = [
       { text: "Admin moderation tools", enabled: true },
     ],
     ctaText: "Start Pro Plan",
-    ctaHref: "/client/settings/organisation/billing/all-plans",
+    ctaHref: PLAN_CTA,
     ctaVariant: "filled",
     variant: "popular",
     badgeText: "Most Popular",
